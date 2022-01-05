@@ -1,22 +1,26 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <head>
 </head>
 <body>
-
-
 <div id="progress"></div>
 
 <script>
+  let i = 0;
 
   function count() {
-    for (let i = 0; i < 1e6; i++) {
+
+    // 重い処理の一部を実行 (*)
+    do {
       i++;
       progress.innerHTML = i;
+    } while (i % 1e3 != 0);
+
+    if (i < 1e7) {
+      setTimeout(count);
     }
-   
+
   }
 
   count();
 </script>
 </body>
-</html>
